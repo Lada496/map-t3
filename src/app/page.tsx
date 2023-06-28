@@ -1,9 +1,13 @@
+"use client";
+import { trpcClient } from "~/trpc/client/trpc-client";
 import Link from "next/link";
 import Image from "next/image";
 import Button from "~/clients/components/Button";
 import Text from "~/clients/components/Text";
 
 const HomePage = () => {
+  const { data } = trpcClient.example.hello.useQuery({ text: "hello" });
+  console.log(data, "data");
   return (
     <>
       <main className="relative flex h-screen flex-col items-center justify-center">
